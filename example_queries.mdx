@@ -1,0 +1,52 @@
+-- Le double tiret introduit met une ligne en commentaire. Décommenter l'une ou
+-- l'autre des requêtes ci-dessous pour la tester (en commentant les autres).
+
+-- Chiffre d'affaires par mois
+--SELECT [].MEMBERS ON COLUMNS, [Measures].[CA] ON ROWS
+--FROM Ventes
+
+-- Chiffre d'affaires cumulé sur les mois de janvier et février 2020
+-- SELECT [Measures].[CA] ON 0
+-- FROM Ventes
+-- WHERE ({[2020].[1].[janvier], [2020].[1].[février]})
+
+-- Chiffre d'affaires pour les mois de janvier et février 2020
+
+--Exercice 2
+--SELECT [Measures].CA ON 0 FROM Ventes
+
+--Exercice 3
+--SELECT [Nom mois].MEMBERS ON COLUMNS, [Measures].[CA] ON ROWS
+--FROM Ventes
+
+--Exercice 4
+--SELECT [Nom mois].MEMBERS ON 0, [Measures].[CA] ON 1, {[Nom region].[Normandie], [Nom region].[Bretagne]} ON 2
+--FROM Ventes
+
+--Exercice 5
+--SELECT [Nom mois].MEMBERS ON 0, [Measures].[CA] ON 1
+--FROM Ventes WHERE {[Nom region].[Normandie], [Nom region].[Bretagne]}
+
+--Exercice 6
+--SELECT [heure_journee].[Heure].MEMBERS on 0, {[Measures].[CA],[Measures].[COUNT]} on 1
+--FROM Ventes
+
+--Exercice 7
+--SELECT [jourDuMois].[Jour].MEMBERS on 0, [Measures].[COUNT] on 1 FROM Ventes
+
+--Exercice 8
+--SELECT [naturalClient].[Nom region].MEMBERS on 0, [natural].[Nom region].MEMBERS on 2, [Measures].[COUNT] on 1
+--FROM Ventes
+
+--Exercice 9
+--SELECT [natural].[department_name].MEMBERS on 0, {[Measures].[COUNT],[Measures].[Prix moyen]} on 1
+--FROM Ventes
+
+--Exercice 10
+--SELECT {[natural].[Nom region].[Normandie],[natural].[Nom region].[Bretagne]} on 0,[Standard].[2020].CHILDREN on 1, {[Measures].[COUNT],[Measures].[Prix moyen]} on 2
+--FROM Ventes
+
+--Exercice 11
+SELECT [naturalPrestations].[category].MEMBERS on 0,[natural].[Nom region].MEMBERS on 1, [Standard].[Trimestre].MEMBERS on 2,[Measures].[Duree moyen] on 3
+FROM Ventes
+
